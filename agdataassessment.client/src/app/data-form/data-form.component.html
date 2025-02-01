@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="card">
+    <h2>Enter Your Details</h2>
+    <form (submit)="submitForm($event)">
+      <div class="input-group">
+        <input type="text" placeholder="Name" [(ngModel)]="name" name="name" />
+        <div *ngIf="nameError" class="error">{{ nameError }}</div>
+      </div>
+      <div class="input-group">
+        <input
+          type="text"
+          placeholder="Address"
+          [(ngModel)]="address"
+          name="address"
+        />
+      </div>
+      <button type="submit" class="btn">Submit</button>
+    </form>
+    <div *ngIf="response" class="response">
+      <h3>Response</h3>
+      <p><strong>Name:</strong> {{ response.name }}</p>
+      <p><strong>Address:</strong> {{ response.address }}</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+.error {
+  text-align: left;
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.response {
+  margin-top: 20px;
+  padding: 10px;
+  background: #e3f2fd;
+  border-radius: 5px;
+}
