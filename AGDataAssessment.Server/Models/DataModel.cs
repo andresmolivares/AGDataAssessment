@@ -1,16 +1,19 @@
-﻿namespace AGData.Services.Models;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace AGData.Services.Models;
 
 public class DataModel
 {
-    public DataModel(string name, string address)
+    public DataModel(string name, string? address)
     {
-        if(string.IsNullOrWhiteSpace(name))
-            throw new ArgumentException("Name is required.", nameof(name));
+        if(name.Length == 0)
+            throw new ArgumentException("Name cannot be empty.", nameof(name));
 
         Name = name;
         Address = address;
     }
 
-    public string? Name { get; set; }
+    [Required(ErrorMessage = "Name is required.")]
+    public string Name { get; set; }
     public string? Address { get; set; }
 }

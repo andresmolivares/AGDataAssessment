@@ -1,4 +1,5 @@
-﻿using AGDataAssessment.Server.Persistence.Interfaces;
+﻿using AGDataAssessment.Server.Persistence;
+using AGDataAssessment.Server.Persistence.Interfaces;
 
 namespace AGData.Services.Bootstrap.Registries;
 

@@ -1,6 +1,7 @@
 ﻿using AGData.Services.Models;
+using AGDataAssessment.Server.Persistence.Interfaces;
 
-namespace AGDataAssessment.Server.Persistence.Interfaces;
+namespace AGDataAssessment.Server.Persistence;
 
 public class DataRepository : IDataRepository
 {

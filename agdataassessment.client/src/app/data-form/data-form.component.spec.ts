@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule } from '@angular/forms';
 import { DataFormComponent } from './data-form.component';
 
 describe('DataFormComponent', () => {
@@ -8,9 +8,9 @@ describe('DataFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DataFormComponent ]
-    })
-    .compileComponents();
+      declarations: [DataFormComponent],
+      imports: [FormsModule],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DataFormComponent);
     component = fixture.componentInstance;

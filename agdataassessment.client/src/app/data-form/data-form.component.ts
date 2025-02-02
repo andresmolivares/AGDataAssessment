@@ -11,19 +11,19 @@ export class DataFormComponent {
   name: string = '';
   address: string = '';
   response: any;
-  nameError: string = ''; // Inline validation error message
+  nameError: string = '';
 
   constructor(private dataService: DataService) {}
 
   async submitForm(event: Event) {
     event.preventDefault();
-    this.nameError = ''; // Reset validation messages
+    this.nameError = '';
 
     try {
       const data = new DataModel(this.name, this.address);
       this.response = await this.dataService.submitData(data);
     } catch (error: any) {
-      this.nameError = error.message;
+      this.nameError = error.response?.data ?? error.message;
     }
   }
 }

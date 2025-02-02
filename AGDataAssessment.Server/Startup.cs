@@ -13,10 +13,10 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
+        services.AddAutoMapper(typeof(Startup));
         services.AddServices();
         services.AddRepositories();
-
-        services.AddAutoMapper(typeof(Startup));
+        
         services.AddControllers();
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
@@ -36,7 +36,6 @@ public class Startup
 
         //app.UseHttpsRedirection();
 
-        //NOTE: Enabled CORS
         app.UseCors(builder => builder
            .AllowAnyHeader()
            .AllowAnyMethod()
