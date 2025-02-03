@@ -8,3 +8,9 @@ The **AGDataAssessment.Server** project adheres to **technical best practices**,
 
 ## Tooling
 From a **tooling** perspective, the entire solution is structured within Visual Studio, allowing seamless development, debugging, and execution. The **Angular and .NET projects** have been combined into a **single solution, with automated build steps** ensuring proper execution. The application compiles with no errors, runs cleanly, and has an easy local setup for quick deployment. Additionally, the testing environment has been optimized by ensuring that all required modules are properly declared, making the project fully functional and production-ready.
+
+## Instructions
+
+Download the zip or clone the **main** repo using **VS 2022** since it supports all the features used in the solution. Once opened in the IDE, ensure that the **start up configuration** is set to both the client and server project to Start.
+
+![Startup Configuration](https://github.com/user-attachments/assets/00c877e3-8dd2-4765-aa54-28abfed04703)
