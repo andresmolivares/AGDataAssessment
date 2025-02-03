@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card">
     <h2>Enter Your Details</h2>
-    <form (submit)="submitForm($event)">
+    <form (submit)="submitForm($event)" *ngIf="itemState != itemStates.Viewing">
       <div class="input-group">
         <input type="text" placeholder="Name" [(ngModel)]="name" name="name" />
         <div *ngIf="nameError" class="error">{{ nameError }}</div>
@@ -14,8 +14,20 @@
           name="address"
         />
       </div>
+      <button type="button" class="btn secondary" (click)="closeModal()">
+        Cancel
+      </button>
       <button type="submit" class="btn">Submit</button>
     </form>
+
+    <div *ngIf="itemState === itemStates.Viewing">
+      <div class="input-group">Name: {{ data.name }}</div>
+      <div class="input-group">Address: {{ data.address }}</div>
+      <button type="button" class="btn secondary" (click)="closeModal()">
+        Close
+      </button>
+    </div>
+
     <div *ngIf="response" class="response">
       <h3>Response</h3>
       <p><strong>Name:</strong> {{ response.name }}</p>

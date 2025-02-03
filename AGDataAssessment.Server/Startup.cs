@@ -13,10 +13,11 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
+        services.AddRavenDb();
         services.AddAutoMapper(typeof(Startup));
-        services.AddServices();
         services.AddRepositories();
-        
+        services.AddServices();
+
         services.AddControllers();
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();

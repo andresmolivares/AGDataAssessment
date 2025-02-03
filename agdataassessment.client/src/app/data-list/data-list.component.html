@@ -1,0 +1,57 @@
+<div class="container">
+  <h2>Data Records</h2>
+  <button class="btn primary" (click)="openModal(null, true)">Add New</button>
+
+  <div *ngIf="isLoading" class="loading">Loading data...</div>
+
+  <table *ngIf="!isLoading && dataList.length > 0">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of dataList">
+        <td>{{ item.name }}</td>
+        <td>{{ item.address }}</td>
+        <td>
+          <button class="btn" (click)="openModal(item)">View</button>
+          <button class="btn edit" (click)="openModal(item, true)">Edit</button>
+          <button class="btn delete" (click)="openDeleteDialog(item)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!isLoading && dataList.length === 0" class="no-data">
+    No records found.
+  </div>
+</div>
+
+<!-- Modal for Add/Edit/View -->
+<div class="modal" *ngIf="modalOpen">
+  <div class="modal-content">
+    <h3 *ngIf="itemState == itemStates.Adding">Add Data</h3>
+    <h3 *ngIf="itemState == itemStates.Editing">Edit Data</h3>
+    <h3 *ngIf="itemState == itemStates.Viewing">View Data</h3>
+    <data-form
+      [data]="selectedItem"
+      [itemState]="itemState"
+      (close)="closeModal()"
+    ></data-form>
+  </div>
+</div>
+
+<!-- Delete Confirmation Prompt -->
+<div class="modal" *ngIf="confirmDelete">
+  <div class="modal-content">
+    <h3>Confirm Deletion</h3>
+    <p>Are you sure you want to delete {{ selectedItem.name }}?</p>
+    <button class="btn delete" (click)="deleteItem()">Yes, Delete</button>
+    <button class="btn" (click)="cancelDelete()">Cancel</button>
+  </div>
+</div>
