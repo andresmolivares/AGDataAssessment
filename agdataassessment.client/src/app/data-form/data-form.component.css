@@ -12,3 +12,14 @@
   background: #e3f2fd;
   border-radius: 5px;
 }
+
+.actionButtons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.btn.delete {
+  background-color: #dc3545;
+  color: white;
+}

@@ -4,17 +4,18 @@ namespace AGData.Services;
 
 public class Startup
 {
+    public readonly IConfiguration _configuration;
+    
     public Startup(IConfiguration configuration)
     {
-        Configuration = configuration;
+        _configuration = configuration;
     }
-
-    public IConfiguration Configuration { get; }
 
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddRavenDb();
         services.AddAutoMapper(typeof(Startup));
+        services.AddOptions();
+        services.AddRavenDb(_configuration);
         services.AddRepositories();
         services.AddServices();
 

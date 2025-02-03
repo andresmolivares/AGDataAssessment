@@ -12,18 +12,15 @@ export class DataFormComponent {
   @Input() data: any;
   @Input() itemState: ItemStateEnum = ItemStateEnum.Viewing;
   @Output() close = new EventEmitter<void>();
-  name: string = '';
-  address: string = '';
-  response: any;
   nameError: string = '';
-
   itemStates = ItemStateEnum;
 
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
-    this.name = this.data?.name;
-    this.address = this.data?.address;
+    if (this.itemState === ItemStateEnum.Adding) {
+      this.data = { name: '', address: '' };
+    }
   }
 
   closeModal() {
@@ -48,8 +45,8 @@ export class DataFormComponent {
 
   async addDocument() {
     try {
-      const document = new DocumentModel(this.name, this.address);
-      this.response = await this.dataService.addData(document);
+      const document = new DocumentModel(this.data.name, this.data.address);
+      await this.dataService.addData(document);
       this.closeModal();
     } catch (error: any) {
       this.nameError = error.response?.data ?? error.message;
@@ -58,12 +55,10 @@ export class DataFormComponent {
 
   async updateDocument() {
     try {
-      this.data.name = this.name;
-      this.data.address = this.address;
-      this.response = await this.dataService.updateData(this.data);
+      await this.dataService.updateData(this.data);
       this.closeModal();
     } catch (error: any) {
-      this.nameError = error.response?.data ?? error.message;
+      this.nameError = 'Name is required';
     }
   }
 }

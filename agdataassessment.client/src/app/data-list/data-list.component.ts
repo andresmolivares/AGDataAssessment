@@ -15,10 +15,11 @@ export enum ItemStateEnum {
 export class DataListComponent {
   modalOpen: boolean = false;
   confirmDelete: boolean = false;
-  dataList: any[] = [];
-  itemState: ItemStateEnum = ItemStateEnum.Viewing;
-  selectedItem: any;
   isLoading: boolean = false;
+  dataList: any[] = [];
+  selectedItem: any;
+  itemState: ItemStateEnum = ItemStateEnum.Viewing;
+
   itemStates = ItemStateEnum;
 
   constructor(private dataService: DataService) {}

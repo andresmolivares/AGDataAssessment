@@ -10,6 +10,14 @@ public class SimpleDbRepository : IDocumentRepository
     public SimpleDbRepository()
     {
         _store = new();
+        LoadData();
+    }
+
+    private void LoadData()
+    {
+        AddDocument(new DataDocument("1", "Person1", "Firstville"));
+        AddDocument(new DataDocument("2", "Person2", "Secondsville"));
+        AddDocument(new DataDocument("3", "Person3", "Thirdsville"));
     }
 
     public void AddDocument(DataDocument model)
