@@ -22,9 +22,3 @@ An update to the application was added to allow the users to **manage a collecti
 Technically, a persistence layer was added, services and a separate controller, with endpoints, to manage these document items. The **IDocumentRepository** interface provides to support for persisting data. 
 
 The SimpleDbRepository implements a local based dictionary, with pre-populated data. I tried to implementing RavenDb via a container, but ran into connectivity issues, thus why the fallback IDocumentRepository.
-
-
-
-
-
-
