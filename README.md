@@ -17,8 +17,8 @@ Download the zip or clone the **main** repo using **VS 2022** since it supports 
 
 ## Adding Persistence
 
-An update to the application was added to allow the users to **manage a collection** items of name and address. This branch builds upon, and enhances the UX, by providing a listing of stored items, and capabilities to perform **CRUD operations** to managed the list. 
+This branch enhances the application by enabling users to **manage a collection** of name and address records. It improves the user experience by introducing CRUD operations for managing these records.
 
-Technically, a persistence layer was added, services and a separate controller, with endpoints, to manage these document items. The **IDocumentRepository** interface provides to support for persisting data. 
+To support these capabilities, **a persistence layer** was added, including services, a repository, and separate controllers with CQRS endpoints. The **IDocumentRepository** interface handles data persistence, while the SimpleDbRepository provides a local dictionary-based implementation with pre-populated data.
 
-The SimpleDbRepository implements a local based dictionary, with pre-populated data. I tried to implementing RavenDb via a container, but ran into connectivity issues, thus why the fallback IDocumentRepository.
+Although there were connectivity challenges when implementing RavenDB through container and cloud options, the fallback IDocumentRepository implementation currently ensures persistence functionality.
