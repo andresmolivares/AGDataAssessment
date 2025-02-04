@@ -10,6 +10,7 @@ public static class PersistenceRegistry
         services.AddSingleton<IDataRepository, DataRepository>();
         //Uncomment when RavenDb set up resolved
         //services.AddSingleton<IDocumentRepository, RavenDbRepository>();
+        //Uncomment to work with a simple repository
         services.AddSingleton<IDocumentRepository, SimpleDbRepository>();
     }
 }

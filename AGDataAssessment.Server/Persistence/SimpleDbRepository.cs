@@ -43,7 +43,7 @@ public class SimpleDbRepository : IDocumentRepository
         _store.Remove(id);
     }
 
-    public IQueryable<DataDocument> GetDocuments()
+    public IEnumerable<DataDocument> GetDocuments()
     {
         return _store.Values.AsQueryable();
     }

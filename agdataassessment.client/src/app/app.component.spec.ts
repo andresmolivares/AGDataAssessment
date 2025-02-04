@@ -2,13 +2,13 @@ import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { DataFormComponent } from './data-form/data-form.component';
+import { DataListComponent } from './data-list/data-list.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule, FormsModule],
-      declarations: [AppComponent, DataFormComponent],
+      declarations: [AppComponent, DataListComponent],
     }).compileComponents();
   });
 

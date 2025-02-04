@@ -12,5 +12,5 @@ public interface IDocumentRepository
 
     void DeleteDocument(string id);
 
-    IQueryable<DataDocument> GetDocuments();
+    IEnumerable<DataDocument> GetDocuments();
 }

@@ -38,11 +38,12 @@ public class RavenDbRepository : IDocumentRepository
         using var session = _store.OpenSession();
         var document = session.Load<DataDocument>(id);
         session.Delete(document);
+        session.SaveChanges();
     }
 
-    public IQueryable<DataDocument> GetDocuments()
+    public IEnumerable<DataDocument> GetDocuments()
     {
         using var session = _store.OpenSession();
-        return session.Query<DataDocument>();
+        return session.Query<DataDocument>().ToList();
     }
 }
