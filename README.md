@@ -14,3 +14,17 @@ From a **tooling** perspective, the entire solution is structured within Visual 
 Download the zip or clone the **main** repo using **VS 2022** since it supports all the features used in the solution. Once opened in the IDE, ensure that the **start up configuration** is set to both the client and server project to Start.
 
 ![Startup Configuration](https://github.com/user-attachments/assets/00c877e3-8dd2-4765-aa54-28abfed04703)
+
+## Adding Persistence
+
+An update to the application was added to allow the users to **manage a collection** items of name and address. This branch builds upon, and enhances the UX, by providing a listing of stored items, and capabilities to perform **CRUD operations** to managed the list. 
+
+Technically, a persistence layer was added, services and a separate controller, with endpoints, to manage these document items. The **IDocumentRepository** interface provides to support for persisting data. 
+
+The SimpleDbRepository implements a local based dictionary, with pre-populated data. I tried to implementing RavenDb via a container, but ran into connectivity issues, thus why the fallback IDocumentRepository.
+
+
+
+
+
+
