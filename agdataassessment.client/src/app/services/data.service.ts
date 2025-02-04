@@ -51,16 +51,4 @@ export class DataService {
       throw error;
     }
   }
-
-  // Get a single item by ID
-  async getItemById(id: string): Promise<any> {
-    try {
-      const url = `${this.apiDocumentQueryUrl}/${id}`;
-      const response = await axios.get(url);
-      return response.data;
-    } catch (error) {
-      console.error('Error fetching item:', error);
-      throw error;
-    }
-  }
 }
