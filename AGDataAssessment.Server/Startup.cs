@@ -4,19 +4,21 @@ namespace AGData.Services;
 
 public class Startup
 {
+    public readonly IConfiguration _configuration;
+    
     public Startup(IConfiguration configuration)
     {
-        Configuration = configuration;
+        _configuration = configuration;
     }
-
-    public IConfiguration Configuration { get; }
 
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddAutoMapper(typeof(Startup));
-        services.AddServices();
+        services.AddOptions();
+        services.AddRavenDb(_configuration);
         services.AddRepositories();
-        
+        services.AddServices();
+
         services.AddControllers();
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();

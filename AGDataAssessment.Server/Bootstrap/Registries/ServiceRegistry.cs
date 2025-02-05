@@ -8,5 +8,6 @@ public static class ServiceRegistry
     public static void AddServices(this IServiceCollection services)
     {
         services.AddTransient<IDataService, DataService>();
+        services.AddScoped<IDocumentService, DocumentService>();
     }
 }

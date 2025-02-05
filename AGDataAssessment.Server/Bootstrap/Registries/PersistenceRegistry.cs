@@ -7,6 +7,10 @@ public static class PersistenceRegistry
 {
     public static void AddRepositories(this IServiceCollection services)
     {
-        services.AddTransient<IDataRepository, DataRepository>();
+        services.AddSingleton<IDataRepository, DataRepository>();
+        //Uncomment when RavenDb set up resolved
+        //services.AddSingleton<IDocumentRepository, RavenDbRepository>();
+        //Uncomment to work with a simple repository
+        services.AddSingleton<IDocumentRepository, SimpleDbRepository>();
     }
 }

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DataService } from '../services/data.service';
-import { DataModel } from '../models/data.model';
+import { ItemStateEnum } from '../data-list/data-list.component';
+import { DocumentModel } from '../models/document.model';
 
 @Component({
   selector: 'data-form',
@@ -8,22 +9,56 @@ import { DataModel } from '../models/data.model';
   styleUrls: ['./data-form.component.css'],
 })
 export class DataFormComponent {
-  name: string = '';
-  address: string = '';
-  response: any;
+  @Input() data: any;
+  @Input() itemState: ItemStateEnum = ItemStateEnum.Viewing;
+  @Output() close = new EventEmitter<void>();
   nameError: string = '';
+  itemStates = ItemStateEnum;
 
   constructor(private dataService: DataService) {}
+
+  ngOnInit() {
+    if (this.itemState === ItemStateEnum.Adding) {
+      this.data = { name: '', address: '' };
+    }
+  }
+
+  closeModal() {
+    this.close.emit();
+  }
 
   async submitForm(event: Event) {
     event.preventDefault();
     this.nameError = '';
 
+    switch (this.itemState) {
+      case ItemStateEnum.Adding:
+        await this.addDocument();
+        break;
+      case ItemStateEnum.Editing:
+        await this.updateDocument();
+        break;
+      default:
+        break;
+    }
+  }
+
+  async addDocument() {
     try {
-      const data = new DataModel(this.name, this.address);
-      this.response = await this.dataService.submitData(data);
+      const document = new DocumentModel(this.data.name, this.data.address);
+      await this.dataService.addData(document);
+      this.closeModal();
     } catch (error: any) {
       this.nameError = error.response?.data ?? error.message;
+    }
+  }
+
+  async updateDocument() {
+    try {
+      await this.dataService.updateData(this.data);
+      this.closeModal();
+    } catch (error: any) {
+      this.nameError = 'Name is required';
     }
   }
 }
