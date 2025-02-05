@@ -19,7 +19,14 @@ Download the zip or clone the **main** repo using **VS 2022** since it supports 
 
 An update to the application was added to allow the users to **manage a collection** of name/address items. This branch builds upon, and enhances the UX, by providing a listing of stored items, and capabilities to perform **CRUD operations** to managed the list. 
 
-To support these capabilities, **a persistence layer** was added, including services, a repository, and separate controllers with CQRS endpoints. The **IDocumentRepository** interface handles data persistence, while the SimpleDbRepository provides a local dictionary-based implementation with pre-populated data.
+To support these capabilities, **a persistence layer** was added, including services, a repository, and separate controllers with CQRS endpoints. The **IDocumentRepository** interface handles data persistence with the default SimpleDbRepository implementation that uses local dictionary-based implementation with pre-populated data.
 
-A RavenDbRepository implementation stores the data in the cloud. Alternatively, and by default, the SimpleDbRepository implements a local based dictionary, with pre-populated data. This will only work local on my machine since RavenDb cloud is looking for my IP address.
+A RavenDbRepository implementation persists the data in the cloud and can be updated via the RavenDb settings for the desired connectivity.
+```
+  "RavenDb": {
+    "StoreUrl": "https://<store domain>.ravendb.cloud",
+    "DatabaseName": "<database name>",
+    "ClientCertificatePath": "<client certificate pfx path>"
+  }
+```
 
